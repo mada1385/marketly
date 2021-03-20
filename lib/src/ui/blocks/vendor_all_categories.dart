@@ -65,7 +65,7 @@ class CategoryRow extends StatelessWidget {
     return ListTile(
       contentPadding: EdgeInsets.all(16.0),
       trailing: Icon(Icons.keyboard_arrow_right),
-      isThreeLine: category.description.isEmpty ? false : true,
+      isThreeLine: category.description == null ? false : true,
       onTap: () {
         onCategoryClick(category);
       },
@@ -108,7 +108,7 @@ class CategoryRow extends StatelessWidget {
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
       ),
-      subtitle: category.description.isEmpty
+      subtitle: category.description == null
           ? null
           : Text(
               category.description,

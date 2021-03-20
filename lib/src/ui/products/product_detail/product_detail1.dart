@@ -283,7 +283,6 @@ class _ProductDetail1State extends State<ProductDetail1> {
                           fontSize: 16,
                           fontFamily: 'Lexend_Deca'),
                     ),
-                    SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -294,8 +293,11 @@ class _ProductDetail1State extends State<ProductDetail1> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                widget.product.salePrice != null
-                                    ? widget.product.salePrice.toString()
+                                (widget.product.formattedSalesPrice != null &&
+                                        widget.product.formattedSalesPrice
+                                            .isNotEmpty)
+                                    ? parseHtmlString(
+                                        widget.product.formattedSalesPrice)
                                     : '',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w900,
@@ -306,8 +308,11 @@ class _ProductDetail1State extends State<ProductDetail1> {
                                   ? SizedBox(width: 6)
                                   : SizedBox(width: 0),
                               Text(
-                                widget.product.price != null
-                                    ? widget.product.price.toString()
+                                (widget.product.formattedPrice != null &&
+                                        widget
+                                            .product.formattedPrice.isNotEmpty)
+                                    ? parseHtmlString(
+                                        widget.product.formattedPrice)
                                     : '',
                                 style: TextStyle(
                                   fontFamily: 'Lexend_Deca',

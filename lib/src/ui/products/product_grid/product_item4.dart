@@ -2,13 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image/network.dart';
 import 'package:scoped_model/scoped_model.dart';
-
 import './../../../layout/adaptive.dart';
 import './../../../layout/text_scale.dart';
 import './../../../ui/products/product_grid/product_item.dart';
 import '../../../models/app_state_model.dart';
 import '../../../models/product_model.dart';
-import '../../../ui/accounts/login/login.dart';
 import '../../../ui/products/product_detail/product_detail.dart';
 
 double desktopCategoryMenuPageWidth({
