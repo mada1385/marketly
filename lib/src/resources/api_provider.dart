@@ -61,12 +61,13 @@ class ApiProvider {
   Future<List<Product>> fetchProductList(
     Map data,
   ) async {
+    AppStateModel state = AppStateModel();
     data.addAll(filter);
     headers['content-type'] =
         'application/x-www-form-urlencoded; charset=utf-8';
     final response = await http.post(
       Uri.parse(config.url +
-          '/wp-admin/admin-ajax.php?action=mstore_flutter-products&lang=ar'),
+          '/wp-admin/admin-ajax.php?action=mstore_flutter-products&lang=${state.appLocale.languageCode}'),
       headers: headers,
       body: data,
     );

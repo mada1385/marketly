@@ -129,19 +129,22 @@ class _ProductItemState extends State<ProductItem> {
                             color: Theme.of(context).focusColor.withOpacity(1)),
                       ),
                       Positioned(
-                        top: 0.0,
-                        right: 0.0,
+                        top: 25,
+                        right: -25,
                         child: Row(
                           children: [
-                            !widget.product.onSale
-                                ? Container(
-                                    color: Colors.red,
-                                    width: 60,
-                                    height: 20,
-                                    child: Center(
-                                      child: Text(
-                                        "sale",
-                                        style: TextStyle(color: Colors.white),
+                            widget.product.onSale
+                                ? Transform.rotate(
+                                    angle: 45,
+                                    child: Container(
+                                      color: Colors.red,
+                                      width: 90,
+                                      height: 20,
+                                      child: Center(
+                                        child: Text(
+                                          "sale",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
                                       ),
                                     ),
                                   )
@@ -257,7 +260,7 @@ class _ProductItemState extends State<ProductItem> {
                                     height: 0,
                                   )
                                 : CircleAvatar(
-                                    radius: 13,
+                                    radius: 12.75,
                                     backgroundImage: NetworkImageWithRetry(
                                         widget.product.vendor.icon),
                                   ),

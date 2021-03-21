@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import '../../src/resources/api_provider.dart';
 import 'product_model.dart';
 
 class DealsStateModel extends Model {
-  static final DealsStateModel _dealsStateModel =
-      new DealsStateModel._internal();
+
+  static final DealsStateModel _dealsStateModel = new DealsStateModel._internal();
 
   factory DealsStateModel() {
     return _dealsStateModel;
@@ -53,4 +52,5 @@ class DealsStateModel extends Model {
     notifyListeners();
     return true;
   }
+
 }

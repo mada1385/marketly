@@ -26,7 +26,7 @@ class _StoresState extends State<Stores> {
     if (widget.filter != null) {
       widget.model.filter = widget.filter;
     }
-    widget.model.getAllStores(context);
+    widget.model.getAllStores();
     _scrollController.addListener(_loadMoreItems);
   }
 

@@ -38,7 +38,6 @@ class StoreModel {
 
   factory StoreModel.fromJson(Map<String, dynamic> json) => StoreModel(
         isclosed: json["is_close"] == null ? null : json["is_close"],
-
         id: json["id"] == null ? null : json["id"],
         name: json["name"] == null ? null : json["name"],
         icon:

@@ -309,25 +309,43 @@ class PriceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.baseline,
-      textBaseline: TextBaseline.ideographic,
-      children: <Widget>[
-        Text(onSale ? product.salePrice.toString() : '',
-            textAlign: TextAlign.left,
-            style: Theme.of(context).textTheme.bodyText2.copyWith(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                )),
-        onSale ? SizedBox(width: 4.0) : SizedBox(width: 0.0),
-        Text(product.price != "" ? product.price.toString() : '',
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              fontWeight: onSale ? FontWeight.w400 : FontWeight.w600,
-              fontSize: onSale ? 12 : 14,
-              decoration:
-                  onSale ? TextDecoration.lineThrough : TextDecoration.none,
-            )),
-      ],
-    );
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.baseline,
+        textBaseline: TextBaseline.alphabetic,
+        children: <Widget>[
+          Container(
+              child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                (product.formattedSalesPrice != null &&
+                        product.formattedSalesPrice.isNotEmpty)
+                    ? parseHtmlString(product.formattedSalesPrice)
+                    : '',
+                style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 12,
+                    fontFamily: 'Lexend_Deca'),
+              ),
+              product.onSale ? SizedBox(width: 6) : SizedBox(width: 0),
+              Text(
+                (product.formattedPrice != null &&
+                        product.formattedPrice.isNotEmpty)
+                    ? parseHtmlString(product.formattedPrice)
+                    : '',
+                style: TextStyle(
+                  fontFamily: 'Lexend_Deca',
+                  fontWeight: onSale ? FontWeight.w400 : FontWeight.w900,
+                  fontSize: onSale ? 12 : 10,
+                  color: onSale
+                      ? Theme.of(context).hintColor
+                      : Theme.of(context).textTheme.bodyText1.color,
+                  decoration:
+                      onSale ? TextDecoration.lineThrough : TextDecoration.none,
+                ),
+              ),
+            ],
+          ))
+        ]);
   }
 }

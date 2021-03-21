@@ -9,6 +9,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 //import 'package:path/path.dart' as p;
 //import 'package:path_provider/path_provider.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:upgrader/upgrader.dart';
 
 import 'others/splash.dart';
 import 'src/app.dart';
@@ -102,7 +103,7 @@ class _MyAppState extends State<MyApp> {
                   ],
                   supportedLocales: GalleryOptions.supportedLocales,
                   locale: GalleryOptions.of(context).locale,
-                  title: 'WooCommerce',
+                  title: 'Marketly',
                   debugShowCheckedModeBanner: false,
                   themeMode: GalleryOptions.of(context).themeMode,
                   theme: GalleryOptions.of(context).locale == Locale('ar')
@@ -128,15 +129,17 @@ class _MyAppState extends State<MyApp> {
                     } else {
                       return Material(
                           child: Scaffold(
-                        body: AnnotatedRegion<SystemUiOverlayStyle>(
-                          value: SystemUiOverlayStyle.dark,
-                          child: Center(
-                            child: Container(
-                                width: 200,
-                                child: Image.asset(
-                                  'lib/assets/images/logo.png',
-                                  fit: BoxFit.fitHeight,
-                                )),
+                        body: UpgradeAlert(
+                          child: AnnotatedRegion<SystemUiOverlayStyle>(
+                            value: SystemUiOverlayStyle.dark,
+                            child: Center(
+                              child: Container(
+                                  width: 200,
+                                  child: Image.asset(
+                                    'lib/assets/images/logo.png',
+                                    fit: BoxFit.fitHeight,
+                                  )),
+                            ),
                           ),
                         ),
                       ));

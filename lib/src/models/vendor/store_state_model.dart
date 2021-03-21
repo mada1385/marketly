@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import '../../resources/api_provider.dart';
 import 'store_model.dart';
 
 class StoreStateModel extends Model {
-  static final StoreStateModel _storeStateModel =
-      new StoreStateModel._internal();
+
+  static final StoreStateModel _storeStateModel = new StoreStateModel._internal();
 
   factory StoreStateModel() {
     return _storeStateModel;
@@ -19,11 +18,9 @@ class StoreStateModel extends Model {
   var filter = new Map<String, String>();
   bool hasMoreItems = false;
 
-  getAllStores(BuildContext context) async {
+  getAllStores() async {
     filter['page'] = page.toString();
-    final response = await apiProvider.post(
-        '/wp-admin/admin-ajax.php?action=mstore_flutter-vendors', filter);
-
+    final response = await apiProvider.post('/wp-admin/admin-ajax.php?action=mstore_flutter-vendors', filter);
     stores = storeModelFromJson(response.body);
     hasMoreItems = stores.length > 9;
     notifyListeners();
@@ -32,8 +29,7 @@ class StoreStateModel extends Model {
   loadMoreStores() async {
     page = page + 1;
     filter['page'] = page.toString();
-    final response = await apiProvider.post(
-        '/wp-admin/admin-ajax.php?action=mstore_flutter-vendors', filter);
+    final response = await apiProvider.post('/wp-admin/admin-ajax.php?action=mstore_flutter-vendors',filter);
     List<StoreModel> moreStore = storeModelFromJson(response.body);
     stores.addAll(moreStore);
     hasMoreItems = moreStore.length > 9;
@@ -43,11 +39,11 @@ class StoreStateModel extends Model {
   refresh() async {
     page = 1;
     filter['page'] = page.toString();
-    final response = await apiProvider.post(
-        '/wp-admin/admin-ajax.php?action=mstore_flutter-vendors', filter);
+    final response = await apiProvider.post('/wp-admin/admin-ajax.php?action=mstore_flutter-vendors', filter);
     stores = storeModelFromJson(response.body);
     hasMoreItems = stores.length > 9;
     notifyListeners();
     return true;
   }
+
 }

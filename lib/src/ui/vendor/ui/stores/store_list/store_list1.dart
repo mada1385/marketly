@@ -143,7 +143,9 @@ class StoreCard extends StatelessWidget {
                                   )),
                         ),
                       ),
-                      //store.averageRating != null ? buildRatingBar() : Container()
+                      store.averageRating != null
+                          ? buildRatingBar()
+                          : Container()
                     ],
                   ),
                 ],

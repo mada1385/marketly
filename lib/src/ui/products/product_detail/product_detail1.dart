@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:app/src/models/vendor/store_model.dart';
+import 'package:app/src/ui/accounts/login/login4/style.dart';
 import 'package:flutter_image/network.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
@@ -249,32 +250,6 @@ class _ProductDetail1State extends State<ProductDetail1> {
                       ],
                     ),
 
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return VendorDetails(
-                            vendorId: widget.product.vendor.id.toString(),
-                          );
-                        }));
-                      },
-                      child: Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 20,
-                            backgroundImage: NetworkImageWithRetry(
-                                widget.product.vendor.icon),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            alignment: Alignment.topLeft,
-                            child: Text(widget.product.vendor.name),
-                          ),
-                        ],
-                      ),
-                    ),
                     Text(
                       widget.product.name,
                       maxLines: 3,
@@ -340,6 +315,35 @@ class _ProductDetail1State extends State<ProductDetail1> {
                     //   store: widget.product.vendor,
                     // )
                   ])),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return VendorDetails(
+                    vendorId: widget.product.vendor.id.toString(),
+                  );
+                }));
+              },
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 25,
+                    backgroundImage:
+                        NetworkImageWithRetry(widget.product.vendor.icon),
+                  ),
+                  SizedBox(width: 15),
+                  Container(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      widget.product.vendor.name,
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     ]));
